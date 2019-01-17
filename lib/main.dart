@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    _printAppDirectory();
     final wordPair = WordPair.random();
     return MaterialApp(
         title: 'Startup Name Generator',
@@ -13,6 +15,10 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.limeAccent
         ),
         home: RandomWords());
+  }
+
+  void _printAppDirectory() async {
+    print("${await getApplicationDocumentsDirectory()}");
   }
 }
 
